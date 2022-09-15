@@ -156,7 +156,10 @@
                   <a class="navbar-link" href="{% url 'products:product_list' %}">Products</a>
                 </li>
                 <li class="navbar-item dropdown-megamenu">
-                  <a class="navbar-link dropdown-arrow" href="#">category</a>
+                  <a class="navbar-link " href="{% url 'products:category_list' %}">category</a>
+                  {% comment "category" %}
+                  
+                  
                   <div class="megamenu">
                     <div class="container megamenu-scroll">
                       <div class="row row-cols-5">
@@ -277,13 +280,16 @@
                               <li><a href="#">nut & yeast</a></li>
                               <li><a href="#">almonds</a></li>
                               <li><a href="#">pumpkin</a></li>
+                              
                             </ul>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                {% endcomment %}
                 </li>
+
                 <li class="navbar-item dropdown">
                   <a class="navbar-link " href="{% url 'products:brand_list' %}">Brands</a>
                 </li>
@@ -319,7 +325,8 @@
     <!--=====================================
                 CATEGORY SIDEBAR PART START
         =======================================-->
-    <aside class="category-sidebar">
+    {% comment "cat side bar" %}
+        <aside class="category-sidebar">
       <div class="category-header">
         <h4 class="category-title">
           <i class="fas fa-align-left"></i>
@@ -465,6 +472,8 @@
         <p>All Rights Reserved by <a href="#">Mironcoder</a></p>
       </div>
     </aside>
+    {% endcomment %}
+    
     <!--=====================================
                 CATEGORY SIDEBAR PART END
         =======================================-->

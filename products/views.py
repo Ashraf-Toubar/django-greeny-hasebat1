@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Product, Brand, Category
 
-from django.db.models import Q, F
-
+from django.db.models import Q, F, Value
+from django.db.models.functions import Concat
 from django.db.models.aggregates import Count, Min, Max, Sum, Avg
 
 
@@ -42,8 +42,11 @@ def product_list(request):
   
     #products = Product.objects.select_related('category').select_related('brand').all()
     #one-to-one or one-to-many --> select related? many-to-many prefetch_related 
+
+    # products = Product.objects.aggregate(myavg = Avg('price'), mymax = Max('price'))
     
-    products = Product.objects.aggregate(myavg = Avg('price'), mymax = Max('price'))
+    #products = Product.objects.select_related('category').annotate(info = Concat('name','flag'))
+    products = Product.objects.select_related('category').annotate(info = Concat('name','flag'))
     
     return render(request, 'products/product_list_test.html',{'products':products})
 
@@ -51,6 +54,7 @@ def product_list(request):
 
 class ProductList(ListView):
     model = Product
+    paginate_by= 50
 
 
 class ProductDetail(DetailView):
@@ -63,6 +67,7 @@ class BrandList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["categories"] = Category.objects.all()
+        context["brand_list"] = Brand.objects.all().annotate(product_count= Count('product_brand'))
         return context
 
     # class single : edit detail delete

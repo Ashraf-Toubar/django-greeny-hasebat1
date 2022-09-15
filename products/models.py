@@ -6,6 +6,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from taggit.managers import TaggableManager
 from django.utils.text import slugify
 
+from django.db.models.aggregates import Avg
+
 FLAG_OPTION = (
     ('New','New'),
     ('Feature','Feature'),
@@ -33,6 +35,11 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
        self.slug = slugify(self.name)    
        super(Product, self).save(*args, **kwargs)
+       
+    def avg_review(self):
+        avg = self.product_review.aggregate(avg=Avg('rate'))
+        return avg
+       
 
 class ProductImages(models.Model):
     product = models.ForeignKey("Product", related_name='product_image', on_delete=models.CASCADE)
