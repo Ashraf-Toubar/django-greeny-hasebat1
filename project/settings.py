@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     "taggit",
     "debug_toolbar",
+    'rest_framework',
     
     'accounts',
     'orders',
@@ -166,3 +167,9 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 
 '''
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 20
+}
