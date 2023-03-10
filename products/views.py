@@ -5,7 +5,7 @@ from .models import Product, Brand, Category
 from django.db.models import Q, F, Value
 from django.db.models.functions import Concat
 from django.db.models.aggregates import Count, Min, Max, Sum, Avg
-
+'''we do in views query'''
 
 '''
 def post_list(request):`

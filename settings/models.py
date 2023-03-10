@@ -9,6 +9,7 @@ class Company(models.Model):
     subtitle=models.TextField( max_length=500)
     fb_link=models.URLField( null=True, blank= True)
     twit_link=models.URLField( null=True, blank= True)
+    linkidin_link=models.URLField( null=True, blank= True)
     insta_link=models.URLField( null=True, blank= True)
     emails=models.TextField( max_length=100)
     numbers=models.TextField( max_length=100)

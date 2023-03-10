@@ -12,8 +12,9 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageTabular]
     list_display = ['name', 'flag', 'quantity', 'price']
     list_filter = ['flag', 'brand', 'category', 'price']
+    '''to filter'''
     search_fields = ['name', 'desc', 'subtitle']
-
+    '''to search(search bar)'''
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductImages)

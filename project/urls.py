@@ -23,7 +23,10 @@ urlpatterns = [
     path('products/', include('products.urls', namespace='products')),
     path('__debug__/', include('debug_toolbar.urls')),
 ]
-
+#ال static و ال media اقدر اوصلهم عن طريق ال url عن طريق روح ضيف url لل ال static وmedia
+#علشان تتضاف للurls اللى فوق 
+#علشان يفتح urls اللى فوق اما اجى افتح صورة أو أى ملف media أو static يظهرلى بال url اللى فوق
+#كل ده علشان الصور والحاجات دى تظهر فى ال front-end
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)
